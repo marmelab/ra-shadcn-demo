@@ -63,7 +63,7 @@ export function DataTable<TData>({ columns }: DataTableProps<TData>) {
 								return (
 									<TableHead
 										key={header.id}
-										className={header.column.columnDef.meta?.headerClassName}
+										className={(header.column.columnDef.meta as any)?.headerClassName}
 									>
 										<Button
 											variant="ghost"
@@ -152,5 +152,5 @@ export function DataTable<TData>({ columns }: DataTableProps<TData>) {
 }
 
 interface DataTableProps<TData> {
-	columns: ColumnDef<TData>[];
+  columns: ColumnDef<TData, any>[];
 }
