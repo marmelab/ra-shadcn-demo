@@ -84,8 +84,8 @@ export const AutoCompleteInput = (
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0">
             <Command>
-              <CommandInput placeholder="Search framework..." />
-              <CommandEmpty>No framework found.</CommandEmpty>
+              <CommandInput placeholder="Search..." />
+              <CommandEmpty>No matching item found.</CommandEmpty>
               <CommandGroup>
                 {allChoices.map((choice) => (
                   <CommandItem
