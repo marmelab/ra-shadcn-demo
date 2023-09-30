@@ -3,7 +3,6 @@ import { RaInput } from "@/components/RaInput";
 import { ReferenceInput } from "@/components/ReferenceInput";
 import { Button } from "@/components/ui/button";
 import { EditBase, Form, required, useEditContext } from "ra-core";
-import { Link } from "react-router-dom";
 
 export const ProductEdit = () => (
   <EditBase mutationMode="pessimistic">
