@@ -1,40 +1,31 @@
-import { InputProps, ValidationError, useInput } from "ra-core";
+import { InputProps, useInput, useTranslate } from "ra-core";
 import {
-	FormControl,
-	FormDescription,
-	FormItem,
-	FormLabel,
+  FormControl,
+  FormDescription,
+  FormItem,
+  FormLabel,
 } from "@/components/ui/form";
 import { Input } from "./ui/input";
-import { ControllerFieldState } from "react-hook-form";
+import { FormError } from "./FormError";
 
 export const RaInput = (props: InputProps) => {
-	const { field, fieldState } = useInput(props);
+  const translate = useTranslate();
+  const { field, fieldState } = useInput(props);
 
-	return (
-		<FormItem>
-			<FormLabel>{props.label}</FormLabel>
-			<FormControl>
-				<Input {...field} />
-			</FormControl>
-			<FormDescription>{props.helperText}</FormDescription>
-			<Error fieldState={fieldState} />
-		</FormItem>
-	);
+  return (
+    <FormItem>
+      <FormLabel>
+        {typeof props.label === "string"
+          ? translate(props.label, { _: props.label })
+          : props.label}
+      </FormLabel>
+      <FormControl>
+        <Input {...field} />
+      </FormControl>
+      <FormDescription>{props.helperText}</FormDescription>
+      <FormError fieldState={fieldState} />
+    </FormItem>
+  );
 };
 
-const Error = (props: { fieldState: ControllerFieldState }) => {
-	if (
-		!props.fieldState.invalid ||
-		!props.fieldState.isTouched ||
-		!props.fieldState.error?.message
-	) {
-		return null;
-	}
 
-	return (
-		<p className="text-sm font-medium text-destructive">
-			<ValidationError error={props.fieldState.error?.message} />
-		</p>
-	);
-};
