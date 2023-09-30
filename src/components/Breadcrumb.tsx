@@ -14,7 +14,7 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
       >
         <ol className="flex items-center">
           {validChildren.map((child, index) => (
-            <>
+            <React.Fragment key={index}>
               {child}
               {index < validChildren.length - 1 ? (
                 <li
@@ -24,7 +24,7 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
                   <ChevronRight className="h-4 w-4" />
                 </li>
               ) : null}
-            </>
+            </React.Fragment>
           ))}
         </ol>
       </nav>
@@ -51,7 +51,6 @@ export const BreadcrumbItem = React.forwardRef<
     </li>
   );
 });
-
 
 function getValidChildren(children: React.ReactNode) {
   return React.Children.toArray(children).filter((child) =>

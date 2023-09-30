@@ -6,6 +6,7 @@ import { Layout } from "./layout/Layout";
 import { LoginPage } from "./layout/LoginPage";
 import { products } from "./products";
 import { categories } from "./categories";
+import { Dashboard } from "./Dashboard";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 			i18nProvider={i18nProvider}
 			layout={Layout}
 			loginPage={LoginPage}
+			dashboard={Dashboard}
 		>
 			<Resource {...products} />
 			<Resource {...categories} />
