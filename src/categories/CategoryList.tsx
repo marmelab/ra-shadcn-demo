@@ -1,3 +1,4 @@
+import { Breadcrumb, BreadcrumbItem } from "@/components/Breadcrumb";
 import { DataTable } from "@/components/DataTable";
 import { ReferenceManyCount } from "@/components/ReferenceManyCount";
 import { buttonVariants } from "@/components/ui/button";
@@ -56,16 +57,21 @@ const columns = [
 
 export const CategoryList = () => {
 	const context = useListController<Category>();
-	console.log(context);
 	if (context.isLoading) {
 		return null;
 	}
 
 	return (
-		<ListContextProvider value={context}>
-			<h2 className="text-3xl font-bold tracking-tight mb-8">Categories</h2>
-			{/* @ts-ignore */}
-			<DataTable<Category> columns={columns} />
-		</ListContextProvider>
-	);
+    <ListContextProvider value={context}>
+      <h2 className="text-3xl font-bold tracking-tight mb-2">Categories</h2>
+      <Breadcrumb className="mb-8">
+        <BreadcrumbItem>
+          <Link to="/">Home</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem>Categories</BreadcrumbItem>
+      </Breadcrumb>
+      {/* @ts-ignore */}
+      <DataTable<Category> columns={columns} />
+    </ListContextProvider>
+  );
 };

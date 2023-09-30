@@ -1,18 +1,16 @@
-import { AutoCompleteInput } from "@/components/AutoCompleteInput";
 import { Breadcrumb, BreadcrumbItem } from "@/components/Breadcrumb";
 import { RaInput } from "@/components/RaInput";
-import { ReferenceInput } from "@/components/ReferenceInput";
 import { Button } from "@/components/ui/button";
 import { EditBase, Form, required, useEditContext } from "ra-core";
 import { Link } from "react-router-dom";
 
-export const ProductEdit = () => (
+export const CategoryEdit = () => (
   <EditBase mutationMode="pessimistic">
-    <ProductEditView />
+    <CategoryEditView />
   </EditBase>
 );
 
-const ProductEditView = () => {
+const CategoryEditView = () => {
   const context = useEditContext();
 
   if (context.isLoading || !context.record) {
@@ -29,17 +27,14 @@ const ProductEditView = () => {
           <Link to="/">Home</Link>
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <Link to="/products">Products</Link>
+          <Link to="/categories">Categories</Link>
         </BreadcrumbItem>
-        <BreadcrumbItem>{context.record.reference}</BreadcrumbItem>
+        <BreadcrumbItem>{context.record.name}</BreadcrumbItem>
       </Breadcrumb>
 
       <Form>
         <div className="flex flex-col gap-4 w-full max-w-lg">
-          <RaInput source="reference" label="Reference" validate={required()} />
-          <ReferenceInput source="category_id" reference="categories">
-            <AutoCompleteInput label="Category" />
-          </ReferenceInput>
+          <RaInput source="name" label="Name" validate={required()} />
           <div className="flex flex-row gap-4">
             <Button className="btn btn-primary" type="submit">
               Save
