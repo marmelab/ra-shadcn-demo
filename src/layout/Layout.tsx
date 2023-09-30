@@ -7,7 +7,7 @@ export const Layout = (props: CoreLayoutProps) => {
 	return (
 		<div className="min-h-screen flex flex-col p-2">
 			<div className="border-b grow-0">
-				<div className="flex px-4 w-full justify-between">
+				<div className="flex pr-4 w-full justify-between">
 					<NavigationBar />
 					<UserMenu />
 				</div>
